@@ -1,0 +1,15 @@
+name: pacbio
+bin_size: 10
+platform: pacbio
+
+# Where quantification_benchmarking/pacbio/benchmarking/pipeline.sh wrote
+# its output. run.py discovers samples by scanning this directory for
+# t<N>_s<N> subdirectories.
+results_dir: ../../quantification_benchmarking/pacbio/benchmarking/results
+
+# Which of ../tools.yaml's registered tools (for this platform) to compute
+# precision/recall for.
+tools:
+  - bramble_long
+  - minimap2
+  - minimap2_n115

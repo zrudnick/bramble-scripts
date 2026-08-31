@@ -1,0 +1,22 @@
+name: short_read
+bin_size: 10
+
+# platform selects read_format (how the true transcript ID is parsed out of
+# a read name) and which of ../../config.sh's data_short_dir/data_ont_dir/
+# data_pacbio_dir run.py searches for this sample's matching FASTQ/FASTA.
+platform: short
+
+# Where quantification_benchmarking/short-read/benchmarking/pipeline.sh
+# wrote its output (relative to this file's directory). run.py discovers
+# samples by scanning this directory for t<N>_s<N> subdirectories — nothing
+# here needs to duplicate the tissue/sample grid by hand.
+results_dir: ../../quantification_benchmarking/short-read/benchmarking/results
+
+# Which of ../tools.yaml's registered tools (for this platform) to compute
+# precision/recall for. Comment out any you don't want plotted.
+tools:
+  - bramble_hisat2
+  - bramble_star
+  - bowtie2
+  - bowtie2_k76
+  - star_transcriptome

@@ -1,0 +1,69 @@
+# quantanalysis config.yaml
+
+# ── Tissue / sample grid ─────────────────────────────────────────────────────
+tissues: [0, 1, 2]   
+samples: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# ── Ground truth ─────────────────────────────────────────────────────────────
+# Use {tissue} and {sample} placeholders in path_template.
+ground_truth:
+  path_template: ../../../data/long-read/truth/t{tissue}_s{sample}_transcript_info.tsv
+  sep: "\t"
+  columns:
+    feature_id: transcript_id
+    value: read_count
+
+# ── Methods to compare ───────────────────────────────────────────────────────
+methods:
+  
+  - name: "minimap2 + Oarfish"
+    tool: oarfish
+    path_template: ../benchmarking/results/t{tissue}_s{sample}/oarfish/mm2_N115.quant
+
+  - name: "minimap2 + Bramble + Oarfish"
+    tool: oarfish
+    path_template: ../benchmarking/results/t{tissue}_s{sample}/oarfish/bramble.quant
+
+  - name: "minimap2 + TranSigner"
+    tool: transigner
+    path_template: ../benchmarking/results/t{tissue}_s{sample}/transigner/mm2_N115/abundances.csv
+
+  - name: "minimap2 + Bramble + TranSigner"
+    tool: transigner
+    path_template: ../benchmarking/results/t{tissue}_s{sample}/transigner/bramble/abundances.csv
+
+# ── Output ────────────────────────────────────────────────────────────────────
+output:
+  dir: results
+  format: png
+  dpi: 600
+
+exclude_zero: False
+
+# ── Plot options ──────────────────────────────────────────────────────────────
+plot_options:
+
+  colors:
+    "minimap2 + Oarfish": "#F0E442"
+    "minimap2 + Bramble + Oarfish": "#56B4E9"
+    "minimap2 + TranSigner": "#D55E00"
+    "minimap2 + Bramble + TranSigner": "#14555A"
+
+  scatter_methods:
+    - "minimap2 + Oarfish"
+    - "minimap2 + Bramble + Oarfish"
+    - "minimap2 + TranSigner"
+    - "minimap2 + Bramble + TranSigner"
+
+  scatter:
+    figsize: [15, 15]
+    label_fontsize: 30
+    tick_fontsize: 30
+    annotation_fontsize: 30
+    gridsize: 25
+    hexbin_gamma: 0.1 
+    hexbin_gamma_lin: 0.1
+    log2_axis_max: 25
+    linear_axis_max: 40000
+    scatter_tissue: 0          # which tissue to show in scatter panels
+    scatter_sample: 0          # which sample to show in scatter panels

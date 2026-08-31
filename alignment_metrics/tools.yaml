@@ -1,0 +1,41 @@
+# tools.yaml: registry of every transcriptome-level BAM
+# quantification_benchmarking's pipelines can produce, keyed by a stable
+# label that an analysis config's `tools:` list picks from. This is the
+# single source of truth for "what is this tool's BAM called, relative to a
+# sample's results directory" — bam_name templates mirror the *_bam_name()
+# naming functions in the repo-root config.sh exactly, so the two can't
+# silently drift apart. {sample_id} is substituted with e.g. "t0_s1".
+
+tools:
+  star_transcriptome:
+    display_name: "STAR"
+    platforms: [short]
+    bam_name: "{sample_id}_STAR_transcriptome.bam"
+  bowtie2:
+    display_name: "Bowtie2 (default)"
+    platforms: [short]
+    bam_name: "{sample_id}_bowtie2_transcriptome.bam"
+  bowtie2_k76:
+    display_name: "Bowtie2"
+    platforms: [short]
+    bam_name: "{sample_id}_bowtie2_k76_transcriptome.bam"
+  bramble_hisat2:
+    display_name: "HISAT2 + Bramble"
+    platforms: [short]
+    bam_name: "{sample_id}_bramble_HISAT2_transcriptome.bam"
+  bramble_star:
+    display_name: "STAR + Bramble"
+    platforms: [short]
+    bam_name: "{sample_id}_bramble_STAR_transcriptome.bam"
+  minimap2:
+    display_name: "minimap2 (default)"
+    platforms: [ont, pacbio]
+    bam_name: "{sample_id}_minimap2_transcriptome.bam"
+  minimap2_n115:
+    display_name: "minimap2"
+    platforms: [ont, pacbio]
+    bam_name: "{sample_id}_minimap2_N115_transcriptome.bam"
+  bramble_long:
+    display_name: "minimap2 + Bramble"
+    platforms: [ont, pacbio]
+    bam_name: "{sample_id}_bramble_transcriptome.sorted_name.bam"
