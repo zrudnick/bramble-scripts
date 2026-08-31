@@ -11,5 +11,4 @@ results_dir: ../../quantification_benchmarking/pacbio/benchmarking/results
 # precision/recall for.
 tools:
   - bramble_long
-  - minimap2
   - minimap2_n115

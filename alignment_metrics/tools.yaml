@@ -7,7 +7,7 @@
 # silently drift apart. {sample_id} is substituted with e.g. "t0_s1".
 
 tools:
-  star_transcriptome:
+  star_transcriptome: # note: does not work if STAR removes read names
     display_name: "STAR"
     platforms: [short]
     bam_name: "{sample_id}_STAR_transcriptome.bam"
@@ -23,7 +23,7 @@ tools:
     display_name: "HISAT2 + Bramble"
     platforms: [short]
     bam_name: "{sample_id}_bramble_HISAT2_transcriptome.bam"
-  bramble_star:
+  bramble_star: # note: does not work if STAR removes read names
     display_name: "STAR + Bramble"
     platforms: [short]
     bam_name: "{sample_id}_bramble_STAR_transcriptome.bam"

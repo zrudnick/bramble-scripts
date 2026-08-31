@@ -16,7 +16,4 @@ results_dir: ../../quantification_benchmarking/short-read/benchmarking/results
 # precision/recall for. Comment out any you don't want plotted.
 tools:
   - bramble_hisat2
-  - bramble_star
-  - bowtie2
   - bowtie2_k76
-  - star_transcriptome

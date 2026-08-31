@@ -68,8 +68,11 @@ Open `config.sh` at the repo root and set:
 
 ### Reference files
 
-Place your reference genome and annotation in `data/ref/`, matching the filenames `config.sh`
-expects (or edit `config.sh` to match your own filenames):
+The simulated short- and long-read datasets are available at **ftp://ftp.ccb.jhu.edu/pub/data/bramble**,
+along with the reference genome, annotation, and transcriptome.
+
+Place the reference genome and annotation in `data/ref/`, matching the filenames `config.sh`
+expects (or edit `config.sh` to match the filenames):
 
 | `config.sh` variable | What it is |
 |---|---|
@@ -81,7 +84,7 @@ expects (or edit `config.sh` to match your own filenames):
 
 ### Reads
 
-Drop your FASTQ/FASTA files into the matching folder:
+Drop the FASTQ/FASTA files into the matching folder:
 
 - Short-read: `data/short-read/FASTQ/`
 - ONT: `data/long-read/FASTQ-ont/`
@@ -237,10 +240,7 @@ list to whichever tools (see `tools.yaml` for the full list) you want plotted:
 # config/short_read.yaml
 tools:
   - bramble_hisat2
-  - bramble_star
-  - bowtie2
   - bowtie2_k76
-  - star_transcriptome
 ```
 
 Then run it:
